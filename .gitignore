@@ -1,0 +1,11 @@
+/.vs
+/Arteon.Application/bin
+/Arteon.Application/obj
+/Arteon.Core/obj
+/Arteon.Core/bin
+/Arteon.Infrastructure/obj
+/Arteon.Infrastructure/bin
+/Arteon.WebAPI/obj
+/Arteon.WebAPI/bin
+/Arteon.WebAPI/appsettings.json
+/Arteon.WebAPI/appsettings.Development.json
