@@ -1,0 +1,5 @@
+﻿
+PowerShell commands:
+
+Update-Database -Project "Arteon.Infrastructure" -StartupProject "Arteon.WebAPI" -Verbose
+Add-Migration -Name <Name> -Project "Arteon.Infrastructure" -StartupProject "Arteon.WebAPI" -Verbose
