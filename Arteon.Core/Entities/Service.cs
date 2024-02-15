@@ -18,8 +18,6 @@ namespace Arteon.Core.Entities
             Id = id ?? Guid.Empty;
         }
         private Service() { }
-
-        [Required, MaxLength(32)]
         public string Name { get; private set; }
         [Range(0, double.MaxValue)]
         public double PricePerDay { get; private set; }

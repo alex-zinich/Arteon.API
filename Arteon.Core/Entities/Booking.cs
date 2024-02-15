@@ -24,21 +24,15 @@ namespace Arteon.Core.Entities
         }
 
         private Booking() { }
-
-        [Required]
         public Guid ClientId { get; private set; }
-        [Required]
         public Guid RoomId { get; private set; }
         public bool IsClientVpo { get; private set; }
-        [Required]
         public DateTime StartDate { get; private set; }
-        [Required]
         public DateTime EndDate { get; private set; }
         [Range(0, double.MaxValue)]
         public double FullPrice { get; private set; }
         [Range(0, double.MaxValue)]
         public double PriceWithDiscount { get; private set; }
-        [MaxLength(512)]
         public string Comment { get; private set; }
 
         // Navigation properties

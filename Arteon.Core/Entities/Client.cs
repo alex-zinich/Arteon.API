@@ -18,9 +18,7 @@ namespace Arteon.Core.Entities
 
         private Client() { }
 
-        [Required, MaxLength(128)]
         public string FullName { get; private set; }
-        [Required, MaxLength(64)]
         public string Email { get; private set; }
 
         // Navigation properties
