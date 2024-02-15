@@ -5,9 +5,9 @@ namespace Arteon.Core.Entities
 {
     public class Room : BaseEntity
     {
-        public Room(RoomType typeId, int occupacity, int roomNumber,  Guid? id = null, double pricePerDay = 0)
+        public Room(RoomType type, int occupacity, int roomNumber,  Guid? id = null, double pricePerDay = 0)
         {
-            TypeId = typeId;
+            Type = type;
             Occupacity = occupacity;
             PricePerDay = pricePerDay;
             Id = id ?? Guid.Empty;
@@ -15,7 +15,7 @@ namespace Arteon.Core.Entities
 
         private Room() { }
 
-        public RoomType TypeId { get; private set; }
+        public RoomType Type { get; private set; }
         [Range(101, int.MaxValue)]
         public int RoomNumber { get; private set; }
         [Range(1, 5)]
