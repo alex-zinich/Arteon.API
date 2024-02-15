@@ -1,5 +1,6 @@
 ﻿using Arteon.Core.Entities;
 using Arteon.Core.Services.Database;
+using Arteon.Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
@@ -13,7 +14,20 @@ namespace Arteon.Infrastructure.Context
             base.OnConfiguring(optionsBuilder);
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new RoomEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new ClientEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new BookingEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new ServiceEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new BookingServiceEntityConfiguration());
+        }
+
         public DbSet<Room> Rooms { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<BookingService> BookingServices { get; set; }
 
         public override int SaveChanges()
         {
