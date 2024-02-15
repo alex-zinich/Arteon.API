@@ -15,6 +15,8 @@ namespace Arteon.Core.Entities
             ServiceId = serviceId;
             Id = id ?? Guid.Empty;
         }
+        
+        private BookingService() { }
 
         public Guid BookingId { get; private set; }
         public Guid ServiceId { get; private set; }
