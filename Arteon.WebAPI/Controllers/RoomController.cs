@@ -1,5 +1,8 @@
 ﻿using Arteon.Application.DTO;
+using Arteon.Application.Models;
 using Arteon.Core.Entities;
+using Arteon.Core.Models;
+using Arteon.Core.Services;
 using Arteon.Core.Services.Database;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -11,28 +14,37 @@ namespace Arteon.WebAPI.Controllers
     public class RoomController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IHotelContext _context;
+        private readonly IRoomRepository _roomRepository;
+        private readonly IRoomService _roomService;
 
-        public RoomController(IMapper mapper, IHotelContext context)
+        public RoomController(IMapper mapper, IRoomRepository roomRepository, IRoomService roomService)
         {
             _mapper = mapper;
-            _context = context;
+            _roomRepository = roomRepository;
+            _roomService = roomService;
         }
 
-        [HttpGet]
+        [HttpGet("all")]
         public IActionResult GetRooms()
         {
-            return Ok(_context.Rooms.ToList());
+            return Ok(_mapper.Map<IEnumerable<Room>, IEnumerable<RoomDTO>>(_roomRepository.GetRooms()));
         }
 
-        [HttpPost]
-        public IActionResult AddRoom([FromBody] RoomDTO room)
+        [HttpGet("filter")]
+        public IActionResult FilterRooms([FromQuery] RoomFilterParametersDTO parameters)
         {
-            Room roomEntity = _mapper.Map<RoomDTO, Room>(room);
-
-            _context.Rooms.Add(roomEntity);
-            _context.SaveChanges();
-            return Ok();
+            return Ok(_mapper.Map<IEnumerable<Room>, IEnumerable<RoomDTO>>(
+                _roomService.Filter(_mapper.Map<RoomFilterParametersDTO, RoomFilterParameters>(parameters))));
         }
+
+        /*        [HttpPost]
+                public IActionResult AddRoom([FromBody] RoomDTO room)
+                {
+                    Room roomEntity = _mapper.Map<RoomDTO, Room>(room);
+
+                    _context.Rooms.Add(roomEntity);
+                    _context.SaveChanges();
+                    return Ok();
+                }*/
     }
 }

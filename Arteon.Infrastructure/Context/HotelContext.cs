@@ -29,6 +29,7 @@ namespace Arteon.Infrastructure.Context
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<BookingService> BookingServices { get; set; }
+        public DbSet<RoomType> RoomTypes { get; set; }
 
         public override int SaveChanges()
         {

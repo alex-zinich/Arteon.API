@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Arteon.Core.Entities
+﻿namespace Arteon.Core.Entities
 {
     public class BookingService : BaseEntity
     {
@@ -15,7 +8,7 @@ namespace Arteon.Core.Entities
             ServiceId = serviceId;
             Id = id ?? Guid.Empty;
         }
-        
+
         private BookingService() { }
 
         public Guid BookingId { get; private set; }

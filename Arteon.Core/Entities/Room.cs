@@ -4,7 +4,7 @@ namespace Arteon.Core.Entities
 {
     public class Room : BaseEntity
     {
-        public Room(int roomTypeId, int occupacity, int roomNumber,  Guid? id = null, double pricePerDay = 0)
+        public Room(int roomTypeId, int occupacity, int roomNumber, Guid? id = null, double pricePerDay = 0)
         {
             RoomTypeId = roomTypeId;
             RoomNumber = roomNumber;

@@ -19,7 +19,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MapProfile));
 builder.Services.AddDbContext<HotelContext>(p => p.UseSqlServer(config.GetConnectionString("SQLConnection")));
 builder.Services.AddDependencies();
-
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder => builder.WithOrigins("http://localhost:8080").AllowAnyMethod().AllowAnyHeader().AllowCredentials());

@@ -12,6 +12,11 @@ namespace Arteon.Application
             ShouldMapProperty = p => true;
 
             CreateMap<RoomDTO, Room>().ReverseMap();
+            CreateMap<BookingDTO, Booking>().ReverseMap();
+            CreateMap<ClientDTO, Client>().ReverseMap();
+            CreateMap<ServiceDTO, Service>().ReverseMap();
+            CreateMap<RoomTypeDTO, RoomType>().ReverseMap();
+            CreateMap<BookingServiceDTO, BookingService>().ReverseMap();
         }
     }
 }
