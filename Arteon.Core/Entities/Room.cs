@@ -1,13 +1,13 @@
-﻿using Arteon.Core.Common.Enums;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Arteon.Core.Entities
 {
     public class Room : BaseEntity
     {
-        public Room(RoomType type, int occupacity, int roomNumber,  Guid? id = null, double pricePerDay = 0)
+        public Room(int roomTypeId, int occupacity, int roomNumber,  Guid? id = null, double pricePerDay = 0)
         {
-            Type = type;
+            RoomTypeId = roomTypeId;
+            RoomNumber = roomNumber;
             Occupacity = occupacity;
             PricePerDay = pricePerDay;
             Id = id ?? Guid.Empty;
@@ -15,7 +15,7 @@ namespace Arteon.Core.Entities
 
         private Room() { }
 
-        public RoomType Type { get; private set; }
+        public int RoomTypeId { get; private set; }
         [Range(101, int.MaxValue)]
         public int RoomNumber { get; private set; }
         [Range(1, 5)]
@@ -25,5 +25,6 @@ namespace Arteon.Core.Entities
 
         // Navigation properties
         public ICollection<Booking> Bookings { get; private set; }
+        public RoomType RoomType { get; private set; }
     }
 }

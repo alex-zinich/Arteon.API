@@ -21,6 +21,7 @@ namespace Arteon.Infrastructure.Context
             modelBuilder.ApplyConfiguration(new BookingEntityConfiguration());
             modelBuilder.ApplyConfiguration(new ServiceEntityConfiguration());
             modelBuilder.ApplyConfiguration(new BookingServiceEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new RoomTypeEntityConfiguration());
         }
 
         public DbSet<Room> Rooms { get; set; }
