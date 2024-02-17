@@ -23,6 +23,12 @@ namespace Arteon.Infrastructure.Repository
             return _context.Clients.AsNoTracking().FirstOrDefault(c => c.FullName == fullName);
         }
 
+        public IEnumerable<Client> GetAllClients() {
+            return _context.Clients.AsNoTracking()
+                .Include(c => c.Bookings)
+                .ToList();
+        }
+
         public Client AddClient(Client client)
         {
             _context.Clients.Add(client);

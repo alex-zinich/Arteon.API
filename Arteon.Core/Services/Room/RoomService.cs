@@ -24,8 +24,19 @@ namespace Arteon.Core.Services
             if (parameters.StartDate != null && parameters.EndDate != null)
             {
                 roomQuery = roomQuery.Where(r => !r.Bookings
-                                     .Any(booking => (parameters.StartDate <= booking.StartDate && parameters.EndDate >= booking.StartDate)
-                                            || (parameters.StartDate >= booking.StartDate && parameters.StartDate <= booking.EndDate)));
+                                     .Any(booking => (parameters.StartDate <= booking.StartDate && parameters.EndDate >= booking.EndDate)));
+            }
+
+            if (parameters.StartDate != null)
+            {
+                roomQuery = roomQuery.Where(r => !r.Bookings
+                                     .Any(booking => (parameters.StartDate >= booking.StartDate && parameters.StartDate <= booking.EndDate)));
+            }
+
+            if (parameters.EndDate != null)
+            {
+                roomQuery = roomQuery.Where(r => !r.Bookings
+                                     .Any(booking => (parameters.EndDate >= booking.StartDate && parameters.EndDate <= booking.EndDate)));
             }
 
             if (parameters.RoomType != null)

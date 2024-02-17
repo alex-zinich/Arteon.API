@@ -12,7 +12,6 @@ namespace Arteon.Infrastructure.Configurations
             builder.Property(b => b.RoomId).IsRequired();
             builder.Property(b => b.StartDate).IsRequired();
             builder.Property(b => b.EndDate).IsRequired();
-            builder.Property(b => b.Comment).IsRequired();
         }
     }
 }

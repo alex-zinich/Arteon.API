@@ -37,14 +37,14 @@ namespace Arteon.WebAPI.Controllers
                 _roomService.Filter(_mapper.Map<RoomFilterParametersDTO, RoomFilterParameters>(parameters))));
         }
 
-        /*        [HttpPost]
-                public IActionResult AddRoom([FromBody] RoomDTO room)
-                {
-                    Room roomEntity = _mapper.Map<RoomDTO, Room>(room);
+        //[HttpPost]
+        //public IActionResult AddRoom([FromBody] RoomDTO room)
+        //{
+        //    Room roomEntity = _mapper.Map<RoomDTO, Room>(room);
 
-                    _context.Rooms.Add(roomEntity);
-                    _context.SaveChanges();
-                    return Ok();
-                }*/
+        //    _context.Rooms.Add(roomEntity);
+        //    _context.SaveChanges();
+        //    return Ok();
+        //}
     }
 }

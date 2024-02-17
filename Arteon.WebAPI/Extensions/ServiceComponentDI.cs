@@ -1,5 +1,6 @@
 ﻿using Arteon.Core.Services;
 using Arteon.Core.Services.Database;
+using Arteon.Core.Services.Statistic;
 using Arteon.Infrastructure.Context;
 using Arteon.Infrastructure.Repository;
 
@@ -14,6 +15,7 @@ namespace Arteon.WebAPI.Extensions
             services.AddTransient<IBookingService, BookingService>();
             services.AddTransient<IClientService, ClientService>();
             services.AddTransient<IRoomService, RoomService>();
+            services.AddTransient<IStatisticService, StatisticService>();
 
             services.AddTransient<IBookingRepository, BookingRepository>();
             services.AddTransient<IClientRepository, ClientRepository>();
