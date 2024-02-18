@@ -5,5 +5,6 @@ namespace Arteon.Core.Services.Database
     public interface IRoomRepository
     {
         IEnumerable<Room> GetRooms();
+        Room GetById(Guid id);
     }
 }

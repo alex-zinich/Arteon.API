@@ -4,6 +4,6 @@ namespace Arteon.Core.Services
 {
     public interface IBookingService
     {
-        void BookRoom(Booking booking);
+        Task BookRoom(Booking booking);
     }
 }

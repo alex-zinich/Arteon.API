@@ -1,8 +1,11 @@
 ﻿using Arteon.Core.Services;
 using Arteon.Core.Services.Database;
+using Arteon.Core.Services.Mail;
 using Arteon.Core.Services.Statistic;
 using Arteon.Infrastructure.Context;
 using Arteon.Infrastructure.Repository;
+using Arteon.Infrastructure.Services.Mail;
+using Arteon.Infrastructure.Settings;
 
 namespace Arteon.WebAPI.Extensions
 {
@@ -21,6 +24,9 @@ namespace Arteon.WebAPI.Extensions
             services.AddTransient<IClientRepository, ClientRepository>();
             services.AddTransient<IRoomRepository, RoomRepository>();
             services.AddTransient<IServiceRepository, ServiceRepository>();
+            services.AddTransient<IMailSendService, MailSendService>();
+
+            services.AddTransient<MailSettings>();
         }
     }
 }

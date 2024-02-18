@@ -20,9 +20,9 @@ namespace Arteon.WebAPI.Controllers
         }
 
         [HttpPost("book")]
-        public IActionResult BookRoom([FromBody] BookingDTO booking)
+        public async Task<IActionResult> BookRoom([FromBody] BookingDTO booking)
         {
-            _bookingService.BookRoom(_mapper.Map<BookingDTO, Booking>(booking));
+            await _bookingService.BookRoom(_mapper.Map<BookingDTO, Booking>(booking));
 
             return Ok();
         }

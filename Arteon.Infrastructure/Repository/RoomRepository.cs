@@ -20,5 +20,10 @@ namespace Arteon.Infrastructure.Repository
                 .Include(x => x.RoomType)
                 .ToList();
         }
+
+        public Room GetById(Guid id)
+        {
+            return _context.Rooms.AsNoTracking().FirstOrDefault(x => x.Id == id);
+        }
     }
 }
