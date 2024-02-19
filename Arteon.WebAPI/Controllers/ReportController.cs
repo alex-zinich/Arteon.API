@@ -24,10 +24,10 @@ namespace Arteon.WebAPI.Controllers
         }
 
         [HttpGet()]
-        public IActionResult GetStatistic([FromQuery] ClientStatisticFilterDTO parameters)
+        public IActionResult GetReport([FromQuery] ClientStatisticFilterDTO parameters)
         {
-            return Ok(_mapper.Map<IEnumerable<ClientStatistic>, IEnumerable<ClientStatisticDTO>>(
-                _statisticService.GetBookingStatistic(_mapper.Map<ClientStatisticFilterDTO, ClientStatisticFilter>(parameters))));
+            return Ok(_mapper.Map<BookingReport, BookingReportDTO>(
+                _statisticService.GenerateReport(_mapper.Map<ClientStatisticFilterDTO, ClientStatisticFilter>(parameters))));
         }
     }
 }

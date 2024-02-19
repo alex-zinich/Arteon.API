@@ -9,6 +9,6 @@ namespace Arteon.Core.Services
 {
     public interface IStatisticService
     {
-        public IEnumerable<ClientStatistic> GetBookingStatistic(ClientStatisticFilter parameters);
+        public BookingReport GenerateReport(ClientStatisticFilter parameters);
     }
 }

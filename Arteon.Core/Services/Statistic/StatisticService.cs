@@ -17,8 +17,8 @@ namespace Arteon.Core.Services.Statistic
         {
             _hotelContext = hotelContext;
         }
-
-        public IEnumerable<ClientStatistic> GetBookingStatistic(ClientStatisticFilter parameters = null)
+        
+        public BookingReport GenerateReport(ClientStatisticFilter parameters = null)
         {
             var allBookings = _hotelContext.Bookings.AsNoTracking();
 
@@ -32,18 +32,20 @@ namespace Arteon.Core.Services.Statistic
                 allBookings = allBookings.Where(b => b.CreatedOn <= parameters.EndDate);
             }
 
-            List<ClientStatistic> output = allBookings.GroupBy(b => b.Client)
+            List<ClientStatistic> clientStatistics = allBookings.GroupBy(b => b.Client)
                 .Select(gr => new ClientStatistic()
                 {
                     ClientName = gr.Key.FullName,
                     ClientEmail = gr.Key.Email,
-                    TotalBookings = gr.Count(),
-                    AverageBookingPrice = gr.Average(b => b.PriceWithDiscount),
-                    TotalExpenses = gr.Sum(b => b.PriceWithDiscount)
+                    NumberOfBookings = gr.Count(),
+                    AverageBookingPrice = Math.Round(gr.Average(b => b.PriceWithDiscount), 2),
+                    TotalIncome = gr.Sum(b => b.PriceWithDiscount),
+                    DiscountAmount = gr.Sum(b => b.FullPrice - b.PriceWithDiscount)
                 })
                 .ToList();
 
-            return output;
+            BookingReport report = new BookingReport(clientStatistics);
+            return report;
         }
     }
 }

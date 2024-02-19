@@ -22,6 +22,7 @@ namespace Arteon.Application
             CreateMap<RoomFilterParametersDTO, RoomFilterParameters>().ReverseMap();
             CreateMap<ClientStatisticDTO, ClientStatistic>().ReverseMap();
             CreateMap<ClientStatisticFilterDTO, ClientStatisticFilter>().ReverseMap();
+            CreateMap<BookingReport, BookingReportDTO>().ReverseMap();
         }
     }
 }
