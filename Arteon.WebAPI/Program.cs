@@ -36,6 +36,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().WithOrigins("https://hotel-univer-react-app.web.app"));
+app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
 app.Run();
