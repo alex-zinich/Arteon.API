@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -18,7 +17,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder => builder.WithOrigins("http://localhost:8080").AllowAnyMethod().AllowAnyHeader().AllowCredentials());
 });
-
+builder.Services.AddControllers();
 
 HotelContext context = builder.Services.BuildServiceProvider().GetRequiredService<HotelContext>();
 
@@ -36,5 +35,7 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().WithOrigins("https://hotel-univer-react-app.web.app"));
 
 app.Run();
