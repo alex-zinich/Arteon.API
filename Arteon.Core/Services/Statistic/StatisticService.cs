@@ -1,11 +1,6 @@
 ﻿using Arteon.Core.Models;
 using Arteon.Core.Services.Database;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Arteon.Core.Services.Statistic
 {
@@ -17,19 +12,19 @@ namespace Arteon.Core.Services.Statistic
         {
             _hotelContext = hotelContext;
         }
-        
+
         public BookingReport GenerateReport(ClientStatisticFilter parameters = null)
         {
             var allBookings = _hotelContext.Bookings.AsNoTracking();
 
             if (parameters.StartDate != null)
             {
-                allBookings = allBookings.Where(b => b.CreatedOn >= parameters.StartDate);
+                allBookings = allBookings.Where(b => b.CreatedOn.Date >= parameters.StartDate);
             }
 
             if (parameters.EndDate != null)
             {
-                allBookings = allBookings.Where(b => b.CreatedOn <= parameters.EndDate);
+                allBookings = allBookings.Where(b => b.CreatedOn.Date <= parameters.EndDate);
             }
 
             List<ClientStatistic> clientStatistics = allBookings.GroupBy(b => b.Client)
@@ -44,8 +39,7 @@ namespace Arteon.Core.Services.Statistic
                 })
                 .ToList();
 
-            BookingReport report = new BookingReport(clientStatistics);
-            return report;
+            return new(clientStatistics);
         }
     }
 }

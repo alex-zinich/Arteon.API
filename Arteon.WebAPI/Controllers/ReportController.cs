@@ -1,12 +1,8 @@
-﻿using Arteon.Application.DTO;
-using Arteon.Application.Models;
-using Arteon.Core.Entities;
+﻿using Arteon.Application.Models;
 using Arteon.Core.Models;
 using Arteon.Core.Services;
-using Arteon.Core.Services.Database;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections;
 
 namespace Arteon.WebAPI.Controllers
 {

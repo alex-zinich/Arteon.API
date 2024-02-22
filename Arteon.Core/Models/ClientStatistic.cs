@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Arteon.Core.Models
+﻿namespace Arteon.Core.Models
 {
     public class ClientStatistic
     {

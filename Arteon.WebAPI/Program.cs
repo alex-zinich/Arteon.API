@@ -1,7 +1,6 @@
 using Arteon.Application;
 using Arteon.Infrastructure.Context;
 using Arteon.WebAPI.Extensions;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
