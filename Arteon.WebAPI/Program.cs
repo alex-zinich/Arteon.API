@@ -15,7 +15,7 @@ builder.Services.AddDbContext<HotelContext>(p => p.UseSqlServer(Environment.GetE
 builder.Services.AddDependencies();
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder => builder.WithOrigins("http://localhost:8080").AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+    options.AddDefaultPolicy(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
 });
 builder.Services.AddControllers();
 
